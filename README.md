@@ -66,5 +66,9 @@ Run the following command:
 - ![image](https://user-images.githubusercontent.com/125467447/219590367-5fdccf15-aee8-4553-be99-76d38f09cb6f.png)
 - 
 
+### language
+ - config=>app.php
+ #### change
+    -  'locale' => 'en'     o     'locale' => 'es',
 
 
