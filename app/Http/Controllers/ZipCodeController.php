@@ -54,30 +54,30 @@ class ZipCodeController extends Controller
                 if (count($data) > 0) {
                     $entity = [
                         trans('messages.key') => ($data[0]->c_estado != null) ? intval($data[0]->c_estado) : null,
-                        trans('messages.name') => ($data[0]->d_estado != null) ?  mb_strtoupper($data[0]->d_estado) : null,
+                        trans('messages.name') => ($data[0]->d_estado != null) ?  mb_strtoupper(removingSpecialCharacters($data[0]->d_estado)) : null,
                         trans('messages.code') => null
                     ];
                     $settlements = [];
                     foreach ($data as $row) {
                         $settlements[] = [
                             trans('messages.key') => ($row->id_asenta_cpcons != null) ? intval($row->id_asenta_cpcons) : null,
-                            trans('messages.name') => ($row->d_asenta != null) ? mb_strtoupper($row->d_asenta) : null,
-                            trans('messages.zone_type') => (($row->d_zona != null) ? $row->d_zona : null),
-                            trans('messages.settlement_type') => [trans('messages.name') => $row->d_tipo_asenta],
+                            trans('messages.name') => ($row->d_asenta != null) ? mb_strtoupper(removingSpecialCharacters($row->d_asenta)) : null,
+                            trans('messages.zone_type') => (($row->d_zona != null) ? removingSpecialCharacters($row->d_zona) : null),
+                            trans('messages.settlement_type') => [trans('messages.name') => ($row->d_tipo_asenta != null) ? (removingSpecialCharacters($row->d_tipo_asenta)) : "" ],
                         ];
                     }
                     $root = [
                         trans('messages.zip_code') => trim(str_pad($code, 5, '0', STR_PAD_LEFT)),
-                        trans('messages.locality') => ($data[0]->d_ciudad != null) ? mb_strtoupper($data[0]->d_ciudad) : "",
+                        trans('messages.locality') => ($data[0]->d_ciudad != null) ? mb_strtoupper(removingSpecialCharacters($data[0]->d_ciudad)) : "",
                         trans('messages.federal_entity') => $entity,
                         trans('messages.settlements') => $settlements,
                         trans('messages.municipality') => [
                             trans('messages.key') => (($row->c_mnpio != null) ? intval($row->c_mnpio) : null),
-                            trans('messages.name') => (($row->d_mnpio != null) ? mb_strtoupper($row->d_mnpio) : null)
+                            trans('messages.name') => (($row->d_mnpio != null) ? mb_strtoupper(removingSpecialCharacters($row->d_mnpio)) : null)
                         ]
                     ];
                 }
-            }
+            } 
             return response()->json($root, $statusCode, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'], JSON_UNESCAPED_UNICODE);
         } catch (Exception $exception) {
             Log::info('incidence=>' . $exception->getLine() . "|" . $exception->getMessage());
