@@ -1,15 +1,16 @@
 <?php
 return [
-    'zip_code'     => 'Codigo postal',
-    'settlement' =>'asentamiento',
-    'municipality'=>'municipio',
-    'city'=>'ciudad',
-    'state'=>'estado',
-    'zone'=>'zona',
-    'status_key'=>'clave_estado',
-    'municipality_key'=>'clave municipio',
-    'city_key'=>'clave ciudad',
-    'incidence'=>'error en el servidor, contacte al administrador', 
+    'zip_code'=> 'codigo_postal',
+    'locality' =>'localidad',
+    'federal_entity'=>'entidad_federativa',
+    'key'=>'clave',
+    'name'=>'nombre',
+    'code'=>'codigo',
+    'settlements'=>'asentamiento',
+    'zone_type'=>'tipo_zona',
+    'settlement_type'=>'tipo_asentamiento',
+    'municipality'=>'muncipio',
+    'incidence'=>'server error, contact your administrator',
     'not_numeric' => 'se esperaba un numero',   
     'maxlength'=> '5 digitos maximo'
     ];
