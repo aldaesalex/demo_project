@@ -2,7 +2,7 @@
 
 Getting Started
 
-1. Install
+## 1. Install
 Run the following command:
 
 git clone https://github.com/aldaesalex/demo_project.git
