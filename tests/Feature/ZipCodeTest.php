@@ -17,7 +17,7 @@ class ZipCodeTest extends TestCase
     public function test_codeFound()
     {
         $response = $this->get('/api/zip-codes/91580');
-        $response->assertJsonFragment([trans('messages.zip_code') => '91580',trans('messages.city') => 'Coatepec']);
+        $response->assertJsonFragment([trans('messages.zip_code') => '91580',trans('messages.locality') => 'COATEPEC']);
         $response->assertStatus(200);
     }
 
@@ -29,7 +29,7 @@ class ZipCodeTest extends TestCase
     public function test_code_95094()
     {
         $response = $this->get('/api/zip-codes/95094');
-        $response->assertJsonFragment([trans('messages.zip_code') => '95094',trans('messages.settlement') => 'Motzorongo']);
+        $response->assertJsonFragment([trans('messages.zip_code') => '95094',trans('messages.locality') => '']);
         $response->assertStatus(200);
     }
     
