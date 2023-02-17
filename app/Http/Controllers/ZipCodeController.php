@@ -78,7 +78,7 @@ class ZipCodeController extends Controller
                     ];
                 }
             }
-            return response()->json($root, $statusCode);
+            return response()->json($root, $statusCode, ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'], JSON_UNESCAPED_UNICODE);
         } catch (Exception $exception) {
             Log::info('incidence=>' . $exception->getLine() . "|" . $exception->getMessage());
             return response()->json([
